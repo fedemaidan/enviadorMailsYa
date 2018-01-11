@@ -64,5 +64,42 @@ app.post('/mailer', function(req, res) {
       });
 });
 
+
+app.post('/vale-page', function (req,res) {
+
+
+  var transporter_valen = nodemailer.createTransport(smtpTransport({
+    service: 'gmail',
+    auth: {
+        user: 'youtec.ventas@gmail.com',
+        pass:  'mono2008'
+      }
+    }
+  ));
+
+  var plan = datos.plan
+  var destinatario = datos.destinatario
+
+  let mensaje = {
+        to: destinatario,
+        subject: 'Inicio de petición de Visa para el plan ' + plan ,
+        text: datos.mensaje
+      }
+
+  transporter_valen.sendMail(mensaje, (error, info) => {
+        
+        if (error) {
+            res.send({success: false, msg: error.message});
+            return;
+        }
+        res.send({success: true, msg: 'Mail cargado correctamente'});
+
+        transporter.close();
+      });
+
+
+})
+
+
 app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
