@@ -65,7 +65,7 @@ app.post('/mailer', function(req, res) {
 });
 
 
-app.post('/vale-page', function (req,res) {
+app.post('/valen-page', function (req,res) {
 
 
   var transporter_valen = nodemailer.createTransport(smtpTransport({
