@@ -76,7 +76,7 @@ app.post('/vale-page', function (req,res) {
       }
     }
   ));
-
+  var datos = req.body
   var plan = datos.plan
   var destinatario = datos.destinatario
 
