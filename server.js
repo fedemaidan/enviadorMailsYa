@@ -83,7 +83,7 @@ app.post('/vale-page', function (req,res) {
   let mensaje = {
         to: destinatario,
         subject: 'Inicio de petición de Visa para el plan ' + plan ,
-        text: datos.mensaje
+        text: "lala"
       }
 
   transporter_valen.sendMail(mensaje, (error, info) => {
@@ -102,4 +102,4 @@ app.post('/vale-page', function (req,res) {
 
 
 app.listen(PORT, HOST);
-console.log(`Running on http://${HOST}:${PORT}`);
+console.log(`Running on http://${HOST}:${PORT} . 1`) ;
