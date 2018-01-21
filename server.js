@@ -10,14 +10,14 @@ var cors = require('cors');
 const PORT = 8080;
 const HOST = '0.0.0.0';
 
-var transporter = nodemailer.createTransport({
+var transporter = nodemailer.createTransport(smtpTransport({
     service: 'gmail',
     auth: {
         user: 'youtec.ventas@gmail.com',
         pass:  'mono2008'
     }
   }
-);
+));
 
 // App
 const app = express();
@@ -47,7 +47,6 @@ app.post('/mailer', function(req, res) {
 	var destinatario = datos.destinatario
 
 	let mensaje = {
-        from: "youtec.ventas@gmail.com",
         to: destinatario,
         subject: 'Consultas formulario YOUTEC de ' + nombre + " - " + mail,
         text: datos.mensaje
@@ -56,17 +55,12 @@ app.post('/mailer', function(req, res) {
 	transporter.sendMail(mensaje, (error, info) => {
         
         if (error) {
-          console.log(error);
             res.send({success: false, msg: error.message});
             return;
         }
-        else {
-          console.log(info);
         res.send({success: true, msg: 'Mail cargado correctamente'});
 
         transporter.close();
-         
-        }
       });
 });
 
@@ -75,16 +69,13 @@ app.post('/valen-page', function (req,res) {
 
 
   var transporter_valen = nodemailer.createTransport(smtpTransport({
-    service: 'smtp.gmail.com',
-    port: 465,
-    secure: true, // use SSL
+    service: 'gmail',
     auth: {
         user: 'youtec.ventas@gmail.com',
         pass:  'mono2008'
       }
     }
   ));
-
   var datos = req.body
   var plan = datos.plan
   var destinatario = datos.destinatario
@@ -110,6 +101,8 @@ app.post('/valen-page', function (req,res) {
     return;
 
 })
+
+
 
 
 app.listen(PORT, HOST);
