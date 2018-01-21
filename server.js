@@ -56,11 +56,12 @@ app.post('/mailer', function(req, res) {
 	transporter.sendMail(mensaje, (error, info) => {
         
         if (error) {
+          console.log(error);
             res.send({success: false, msg: error.message});
             return;
         }
         else {
-          cosnole.log(info);
+          console.log(info);
         res.send({success: true, msg: 'Mail cargado correctamente'});
 
         transporter.close();
