@@ -10,11 +10,12 @@ var cors = require('cors');
 const PORT = 8080;
 const HOST = '0.0.0.0';
 
-var transporter = nodemailer.createTransport(
+var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: 'youtec.ventas@gmail.com',
         pass:  'mono2008'
+    }
     }
   );
 
