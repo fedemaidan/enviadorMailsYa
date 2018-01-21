@@ -16,8 +16,8 @@ var transporter = nodemailer.createTransport({
         user: 'youtec.ventas@gmail.com',
         pass:  'mono2008'
     }
-    }
-  );
+  }
+);
 
 // App
 const app = express();
@@ -47,6 +47,7 @@ app.post('/mailer', function(req, res) {
 	var destinatario = datos.destinatario
 
 	let mensaje = {
+        from: "youtec.ventas@gmail.com",
         to: destinatario,
         subject: 'Consultas formulario YOUTEC de ' + nombre + " - " + mail,
         text: datos.mensaje
@@ -58,9 +59,13 @@ app.post('/mailer', function(req, res) {
             res.send({success: false, msg: error.message});
             return;
         }
+        else {
+          cosnole.log(info);
         res.send({success: true, msg: 'Mail cargado correctamente'});
 
         transporter.close();
+         
+        }
       });
 });
 
