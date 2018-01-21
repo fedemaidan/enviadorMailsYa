@@ -11,10 +11,13 @@ const PORT = 8080;
 const HOST = '0.0.0.0';
 
 var transporter = nodemailer.createTransport(smtpTransport({
-    service: 'gmail',
+    service: 'smtp.gmail.com',
+    port: 465,
+    secure: true, // use SSL
     auth: {
         user: 'youtec.ventas@gmail.com',
         pass:  'mono2008'
+      }
     }
   }
 ));
