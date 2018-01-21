@@ -10,17 +10,13 @@ var cors = require('cors');
 const PORT = 8080;
 const HOST = '0.0.0.0';
 
-var transporter = nodemailer.createTransport(smtpTransport({
-    service: 'smtp.gmail.com',
-    port: 465,
-    secure: true, // use SSL
+var transporter = nodemailer.createTransport(
+    service: 'gmail',
     auth: {
         user: 'youtec.ventas@gmail.com',
         pass:  'mono2008'
-      }
     }
-  }
-));
+  );
 
 // App
 const app = express();
@@ -81,7 +77,7 @@ app.post('/valen-page', function (req,res) {
       }
     }
   ));
-  
+
   var datos = req.body
   var plan = datos.plan
   var destinatario = datos.destinatario
