@@ -69,13 +69,16 @@ app.post('/valen-page', function (req,res) {
 
 
   var transporter_valen = nodemailer.createTransport(smtpTransport({
-    service: 'gmail',
+    service: 'smtp.gmail.com',
+    port: 465,
+    secure: true, // use SSL
     auth: {
         user: 'youtec.ventas@gmail.com',
         pass:  'mono2008'
       }
     }
   ));
+  
   var datos = req.body
   var plan = datos.plan
   var destinatario = datos.destinatario
