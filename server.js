@@ -97,6 +97,7 @@ app.post('/valen-page', function (req,res) {
         transporter.close();
       });
 
+    return;
 
 })
 
