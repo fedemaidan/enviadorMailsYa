@@ -81,6 +81,7 @@ app.post('/valen-page', function (req,res) {
   var destinatario = datos.destinatario
 
   let mensaje = {
+        from: 'youtec.ventas@gmail.com',
         to: destinatario,
         subject: 'Inicio de petición de Visa para el plan ' + plan ,
         text: "lala"
