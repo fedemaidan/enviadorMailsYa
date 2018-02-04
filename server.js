@@ -5,6 +5,7 @@ var nodemailer = require('nodemailer');
 var bodyParser = require('body-parser')
 var smtpTransport = require('nodemailer-smtp-transport');
 var cors = require('cors');
+var fs = require('fs');
 
 // Constants
 const PORT = 8080;
@@ -76,15 +77,23 @@ app.post('/valen-page', function (req,res) {
       }
     }
   ));
+
+  var html =  fs.readFileSync('mail_valen.html', 'utf8');
+
   var datos = req.body
   var plan = datos.plan
   var destinatario = datos.destinatario
+  
 
   let mensaje = {
         from: 'youtec.ventas@gmail.com',
         to: destinatario,
         subject: 'Inicio de petición de Visa para el plan ' + plan ,
-        text: "lala"
+        html: html,
+        attachments: [{
+              filename: 'DATOSPERSONALES.docx',
+              path: 'DATOSPERSONALES.docx'
+          }]
       }
 
   transporter_valen.sendMail(mensaje, (error, info) => {
