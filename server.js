@@ -72,8 +72,8 @@ app.post('/valen-page', function (req,res) {
   var transporter_valen = nodemailer.createTransport(smtpTransport({
     service: 'gmail',
     auth: {
-        user: 'youtec.ventas@gmail.com',
-        pass:  'mono2008'
+        user: 'traveltoeeuu@gmail.com',
+        pass:  'policiadelaciudad'
       }
     }
   ));
@@ -86,7 +86,7 @@ app.post('/valen-page', function (req,res) {
   
 
   let mensaje = {
-        from: 'youtec.ventas@gmail.com',
+        from: 'traveltoeeuu@gmail.com',
         to: destinatario,
         subject: 'Inicio de petición de Visa para el plan ' + plan ,
         html: html,
