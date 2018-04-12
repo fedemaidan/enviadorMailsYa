@@ -102,6 +102,7 @@ app.post('/valen-page', function (req,res) {
             res.send({success: false, msg: error.message});
             return;
         }
+        console.log(info)
         res.send({success: true, msg: 'Mail cargado correctamente'});
 
         transporter.close();
