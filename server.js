@@ -83,7 +83,13 @@ app.post('/valen-page', function (req,res) {
   var datos = req.body
   var plan = datos.plan
   var destinatario = datos.destinatario
-  
+  var array = [];
+
+  array["INDIVIDUAL"] = '$949.99';
+  array["PAREJA"] = '$749.99';
+  array["FAMILIA"] = '$649.99';
+
+  html = html.replace("{{PRECIO}}",array[plan])
 
   let mensaje = {
         from: 'info@traveltoeeuu.com',
